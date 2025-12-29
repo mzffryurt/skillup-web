@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SkillUp</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        📚 SkillUp
+      </a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="#" id="navLogin" class="active">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Login Form -->
+  <section class="section">
+    <div class="container">
+      <div style="max-width: 500px; margin: 0 auto;">
+        <div class="card">
+          <div class="card-body" style="padding: 2rem;">
+            <h2 class="text-center mb-3">Welcome Back</h2>
+            <p class="text-center mb-4" style="color: var(--text-secondary);">
+              Sign in to continue your learning journey
+            </p>
+
+            <div id="alertContainer"></div>
+
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  class="form-control" 
+                  required
+                  placeholder="Enter your email"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input 
+                  type="password" 
+                  id="password" 
+                  class="form-control" 
+                  required
+                  placeholder="Enter your password"
+                >
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Sign In
+              </button>
+            </form>
+
+            <div class="text-center mt-3">
+              <p style="color: var(--text-secondary);">
+                Don't have an account? 
+                <a href="register.html" style="font-weight: 600;">Sign up</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About SkillUp</h4>
+          <p>A next-generation learning platform designed to help you acquire new skills and advance your career.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="courses.html">Browse Courses</a>
+          <a href="register.html">Sign Up</a>
+          <a href="login.html">Login</a>
+        </div>
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <a href="courses.html?category=Web+Development">Web Development</a>
+          <a href="courses.html?category=Data+Science">Data Science</a>
+          <a href="courses.html?category=Design">Design</a>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: info@skillup.com</p>
+          <p>Support: support@skillup.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SkillUp. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const navbarMenu = document.getElementById('navbarMenu');
+    
+    if (mobileMenuToggle) {
+      mobileMenuToggle.addEventListener('click', () => {
+        navbarMenu.classList.toggle('active');
+      });
+    }
+
+    // Handle login form submission
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const alertContainer = document.getElementById('alertContainer');
+      
+      try {
+        const result = await api.login(email, password);
+        
+        // Show success message
+        alertContainer.innerHTML = `
+          <div class="alert alert-success">
+            Login successful! Redirecting...
+          </div>
+        `;
+        
+        // Redirect to dashboard after short delay
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1000);
+      } catch (error) {
+        alertContainer.innerHTML = `
+          <div class="alert alert-error">
+            ${error.message || 'Login failed. Please check your credentials.'}
+          </div>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

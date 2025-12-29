@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Courses - SkillUp</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        📚 SkillUp
+      </a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html" class="active">Courses</a></li>
+        <li><a href="#" id="navDashboard" class="hidden">Dashboard</a></li>
+        <li><a href="#" id="navLogin">Login</a></li>
+        <li><a href="#" id="navLogout" class="hidden">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="hero" style="padding: 3rem 0;">
+    <div class="container">
+      <h1>Explore Our Courses</h1>
+      <p>Find the perfect course to advance your skills</p>
+    </div>
+  </section>
+
+  <!-- Search and Filter Bar -->
+  <div class="search-filter-bar">
+    <div class="container">
+      <div class="search-box">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="form-control" 
+          placeholder="Search courses by title, instructor, or tags..."
+        >
+        <button class="btn btn-primary" id="searchBtn">Search</button>
+      </div>
+      <div class="filter-options">
+        <select id="categoryFilter" class="form-control form-select">
+          <option value="all">All Categories</option>
+        </select>
+        <select id="levelFilter" class="form-control form-select">
+          <option value="all">All Levels</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+        <button class="btn btn-secondary" id="clearFiltersBtn">Clear Filters</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Courses Grid -->
+  <section class="section">
+    <div class="container">
+      <div id="coursesCount" class="mb-3" style="color: var(--text-secondary); font-weight: 600;">
+        Loading courses...
+      </div>
+      <div id="coursesGrid" class="grid grid-cols-3">
+        <!-- Courses will be loaded here by JavaScript -->
+        <div class="spinner"></div>
+      </div>
+      <div id="emptyState" class="empty-state hidden">
+        <div class="empty-state-icon">🔍</div>
+        <h3 class="empty-state-title">No Courses Found</h3>
+        <p class="empty-state-text">Try adjusting your search or filters</p>
+        <button class="btn btn-primary" id="emptyStateClearBtn">Clear Filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About SkillUp</h4>
+          <p>A next-generation learning platform designed to help you acquire new skills and advance your career.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="courses.html">Browse Courses</a>
+          <a href="register.html">Sign Up</a>
+          <a href="login.html">Login</a>
+        </div>
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <a href="courses.html?category=Web+Development">Web Development</a>
+          <a href="courses.html?category=Data+Science">Data Science</a>
+          <a href="courses.html?category=Design">Design</a>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: info@skillup.com</p>
+          <p>Support: support@skillup.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SkillUp. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/courses.js"></script>
+</body>
+</html>
