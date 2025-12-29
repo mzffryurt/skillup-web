@@ -212,6 +212,7 @@ The JavaScript code is structured with React migration in mind:
 
 ### Future Enhancements
 - Database integration (MongoDB/PostgreSQL)
+- Rate limiting for API endpoints
 - Real-time progress tracking
 - Video content support
 - Payment integration
@@ -219,6 +220,7 @@ The JavaScript code is structured with React migration in mind:
 - Email notifications
 - Admin panel
 - Advanced analytics
+- Course completion certificates (PDF generation)
 
 ## Contributing
 This is a learning platform project. Contributions are welcome!
