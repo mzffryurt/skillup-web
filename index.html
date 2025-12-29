@@ -5,650 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkillUp - Yeni Nesil Öğrenme Platformu</title>
     
-    <!-- SEO Meta Tags -->
     <meta name="description" content="SkillUp ile programlama, tasarım, veri bilimi ve daha fazlasını öğrenin. 50K+ öğrenci, 200+ kurs, %98 memnuniyet oranı. Hemen ücretsiz kaydolun!">
     <meta name="keywords" content="online eğitim, kurs, programlama, web geliştirme, veri bilimi, UI/UX, yapay zeka, siber güvenlik">
     <meta name="author" content="M.Y. Studios">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SkillUp - Yeni Nesil Öğrenme Platformu">
     <meta property="og:description" content="Modern öğrenme deneyimi ile kariyerinizi yükseltin. 200+ kurs, uzman eğitmenler, sertifika programları.">
     <meta property="og:image" content="https://via.placeholder.com/1200x630/8b5cf6/ffffff?text=SkillUp">
     
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SkillUp - Yeni Nesil Öğrenme Platformu">
     <meta name="twitter:description" content="Modern öğrenme deneyimi ile kariyerinizi yükseltin.">
     
-    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        /* --- TEMEL AYARLAR --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary-purple: #8b5cf6;
-            --light-purple: #a78bfa;
-            --text-dark: #1f2937;
-            --text-gray: #6b7280;
-            --bg-soft: #fbfaff;
-            --header-bg: rgba(255, 255, 255, 0.95);
-        }
-        html { scroll-behavior: smooth; overflow-y: scroll; }
-        body { font-family: 'Inter', sans-serif; background: #F3E8FF; color: var(--text-dark); line-height: 1.6; }
-        
-        /* --- HEADER (ÜST MENÜ) --- */
-        header { position: fixed; top: 0; width: 100%; background: transparent; backdrop-filter: none; z-index: 1000; box-shadow: none; transition: all 0.3s ease; }
-        header.scrolled { background: var(--header-bg); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.05); }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
-        
-        /* LOGO DÜZENLEMESİ */
-        .logo { font-size: 1.8rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 8px; }
-        .logo-img { width: 50px; height: 50px; border-radius: 8px; }
-        .logo-text { color: transparent; background: linear-gradient(90deg, #8b5cf6 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; transition: all 0.3s ease; }
-        header.scrolled .logo-text { color: transparent; background: linear-gradient(90deg, #8b5cf6 0%, #22d3ee 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-        .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-        .nav-links a { text-decoration: none; color: white; font-weight: 500; transition: all 0.3s; }
-        .nav-links a:hover { color: #22d3ee; text-shadow: 0 0 10px rgba(34, 211, 238, 0.5); }
-        header.scrolled .nav-links a { color: var(--text-dark); }
-        header.scrolled .nav-links a:hover { color: var(--primary-purple); }
-
-        .search-bar { background: rgba(255, 255, 255, 0.2); border-radius: 50px; padding: 0.5rem 1.5rem; display: flex; align-items: center; border: 2px solid rgba(255, 255, 255, 0.3); transition: 0.3s; }
-        .search-bar:focus-within { border-color: white; background: rgba(255, 255, 255, 0.3); }
-        .search-bar input { border: none; background: none; outline: none; padding-left: 10px; width: 150px; color: white; }
-        .search-bar input::placeholder { color: rgba(255, 255, 255, 0.8); }
-        header.scrolled .search-bar { background: #f3f4f6; border-color: #e5e7eb; }
-        header.scrolled .search-bar:focus-within { border-color: var(--primary-purple); background: white; }
-        header.scrolled .search-bar input { color: var(--text-dark); }
-        header.scrolled .search-bar input::placeholder { color: #9ca3af; }
-
-        /* BUTONLAR */
-        .auth-buttons { display: flex; gap: 10px; }
-        .btn-login { border: 2px solid white; color: white; padding: 0.6rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 600; background: none; transition: 0.3s; }
-        .btn-login:hover { background: white; color: var(--primary-purple); }
-        .btn-signup { background: white; color: var(--primary-purple); padding: 0.6rem 1.5rem; border-radius: 50px; border: none; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3); transition: 0.3s; }
-        .btn-signup:hover { transform: translateY(-2px); }
-        header.scrolled .btn-login { border-color: var(--primary-purple); color: var(--primary-purple); }
-        header.scrolled .btn-login:hover { background: var(--primary-purple); color: white; }
-        header.scrolled .btn-signup { background: var(--primary-purple); color: white; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); }
-        
-        /* HAMBURGER MENU */
-        .mobile-menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: white; background: none; border: none; padding: 0.5rem; transition: 0.3s; }
-        header.scrolled .mobile-menu-toggle { color: var(--text-dark); }
-        .mobile-menu { display: none; }
-
-        /* PROFİL (GİRİŞ YAPINCA GÖRÜNÜR) */
-        .user-profile { display: none; align-items: center; gap: 10px; cursor: pointer; }
-        #userWelcome { color: white; font-weight: 600; transition: 0.3s; }
-        header.scrolled #userWelcome { color: var(--text-dark); }
-        .user-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, var(--primary-purple), var(--light-purple)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-
-        /* --- HERO SECTION (GİRİŞ EKRANI) --- */
-        .hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: url('images/hero.png') center/cover no-repeat; padding: 0 20px; }
-        
-        .hero-title {
-            font-size: 4.5rem;
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 3rem;
-            color: #5b21b6;
-            letter-spacing: -2px;
-            position: relative;
-        }
-
-        .hero-title span {
-            display: inline-block;
-            animation: charNeon 3s ease-in-out infinite;
-        }
-
-        @keyframes charNeon {
-            0%, 100% { text-shadow: none; }
-            50% { text-shadow: 0 0 20px #fbbf24, 0 0 40px #f59e0b, 0 0 60px #fbbf24; }
-        }
-
-        /* Birinci satır: SkillUP (7 karakter) */
-        .hero-title span:nth-child(1) { animation-delay: 0s; }
-        .hero-title span:nth-child(2) { animation-delay: 0.1s; }
-        .hero-title span:nth-child(3) { animation-delay: 0.2s; }
-        .hero-title span:nth-child(4) { animation-delay: 0.3s; }
-        .hero-title span:nth-child(5) { animation-delay: 0.4s; }
-        .hero-title span:nth-child(6) { animation-delay: 0.5s; }
-        .hero-title span:nth-child(7) { animation-delay: 0.6s; }
-        
-        /* İkinci satır: Yanında (7 karakter) - Birinci satırdan sonra */
-        .hero-title span:nth-child(8) { animation-delay: 0.7s; }
-        .hero-title span:nth-child(9) { animation-delay: 0.8s; }
-        .hero-title span:nth-child(10) { animation-delay: 0.9s; }
-        .hero-title span:nth-child(11) { animation-delay: 1.0s; }
-        .hero-title span:nth-child(12) { animation-delay: 1.1s; }
-        .hero-title span:nth-child(13) { animation-delay: 1.2s; }
-        .hero-title span:nth-child(14) { animation-delay: 1.3s; }
-        
-        /* Üçüncü satır: Bilgi Her Anında (17 karakter) - İkinci satırdan sonra */
-        .hero-title span:nth-child(15) { animation-delay: 1.4s; }
-        .hero-title span:nth-child(16) { animation-delay: 1.5s; }
-        .hero-title span:nth-child(17) { animation-delay: 1.6s; }
-        .hero-title span:nth-child(18) { animation-delay: 1.7s; }
-        .hero-title span:nth-child(19) { animation-delay: 1.8s; }
-        .hero-title span:nth-child(20) { animation-delay: 1.9s; }
-        .hero-title span:nth-child(21) { animation-delay: 2.0s; }
-        .hero-title span:nth-child(22) { animation-delay: 2.1s; }
-        .hero-title span:nth-child(23) { animation-delay: 2.2s; }
-        .hero-title span:nth-child(24) { animation-delay: 2.3s; }
-        .hero-title span:nth-child(25) { animation-delay: 2.4s; }
-        .hero-title span:nth-child(26) { animation-delay: 2.5s; }
-        .hero-title span:nth-child(27) { animation-delay: 2.6s; }
-        .hero-title span:nth-child(28) { animation-delay: 2.7s; }
-        .hero-title span:nth-child(29) { animation-delay: 2.8s; }
-        .hero-title span:nth-child(30) { animation-delay: 2.9s; }
-        .hero-title span:nth-child(31) { animation-delay: 3.0s; }
-
-        .hero-btn { background: #8b5cf6; color: white; padding: 1.2rem 3rem; border-radius: 50px; font-size: 1.25rem; font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(139,92,246,0.4); transition: 0.3s; animation: buttonPulse 2s ease-in-out infinite; }
-        .hero-btn:hover { transform: translateY(-5px); box-shadow: 0 0 40px rgba(139,92,246,0.8), 0 0 60px rgba(139,92,246,0.6), 0 0 80px rgba(139,92,246,0.4); }
-        @keyframes buttonPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.9; } }
-
-        /* --- PARTNERS (LOGOLAR) --- */
-        .partners { margin-top: 3rem; padding: 5rem 20px 1rem; text-align: center; background: #e9d5ff; border: 1px solid rgba(139, 92, 246, 0.15); border-radius: 8px; }
-        .partner-logos { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; margin-bottom: 2rem; font-size: 1.8rem; font-weight: 700; color: #3b82f6; opacity: 0.7; }
-        .partner-text { max-width: 900px; margin: 0 auto; color: #60a5fa; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px; text-transform: uppercase; }
-
-        /* --- KURSLAR --- */
-        .courses { padding: 6rem 20px; max-width: 1400px; margin: 0 auto; }
-        .section-header { text-align: center; font-size: 2.5rem; font-weight: 800; margin-bottom: 4rem; color: #1f2937; }
-        
-        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
-        
-        .course-card { background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); transition: 0.4s; cursor: pointer; border: 1px solid transparent; }
-        .course-card:hover { transform: translateY(-10px); box-shadow: 0 20px 60px rgba(139,92,246,0.15); border-color: var(--primary-purple); }
-        
-        .course-img { height: 180px; background: linear-gradient(135deg, #8b5cf6, #3b82f6); display: flex; align-items: center; justify-content: center; font-size: 4rem; color: white; }
-        .course-info { padding: 2rem; }
-        .course-title { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .course-desc { color: var(--text-gray); font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .course-tag { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f3f4f6; padding-top: 1rem; }
-        .price { color: var(--primary-purple); font-weight: 800; font-size: 1.3rem; }
-
-        /* --- ÖZELLİKLER --- */
-        .features { padding: 6rem 20px; background: white; text-align: center; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1400px; margin: 0 auto; }
-        .feature-card { padding: 3rem 2rem; background: #f9f8ff; border-radius: 20px; transition: 0.3s; border: 2px solid transparent; }
-        .feature-card:hover { transform: translateY(-5px); background: #f3f0ff; border-color: #22d3ee; box-shadow: 0 8px 25px rgba(34, 211, 238, 0.2); }
-        .feature-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
-
-        /* --- YORUMLAR --- */
-        .testimonials-section { padding: 6rem 20px; background: #fafbfc; }
-        .testimonials-container { max-width: 1200px; margin: 0 auto; }
-        .testimonials-header { text-align: center; margin-bottom: 3rem; }
-        .testimonials-title { font-size: 2.5rem; font-weight: 800; color: #1f2937; margin-bottom: 0.5rem; }
-        .testimonials-subtitle { font-size: 1.1rem; color: #6b7280; font-weight: 500; }
-        
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-        
-        .testimonial-card { background: white; padding: 2rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border: 1px solid #e5e7eb; transition: 0.3s; position: relative; }
-        .testimonial-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(34, 211, 238, 0.2); border-color: #22d3ee; }
-        
-        .testimonial-stars { margin-bottom: 1rem; }
-        .star { color: #fbbf24; font-size: 1.2rem; margin-right: 2px; }
-        
-        .testimonial-quote { font-size: 1rem; line-height: 1.7; color: #374151; margin-bottom: 1.5rem; font-style: italic; position: relative; padding-left: 1rem; border-left: 3px solid var(--primary-purple); }
-        
-        .testimonial-author { display: flex; align-items: center; gap: 12px; }
-        .author-avatar { width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary-purple), var(--light-purple)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; flex-shrink: 0; }
-        .author-info { flex: 1; }
-        .author-name { font-weight: 700; color: #1f2937; font-size: 1rem; margin-bottom: 2px; }
-        .author-title { font-size: 0.875rem; color: #6b7280; }
-        
-        /* DAHA FAZLA YÜKLE BUTONU */
-        .load-more-btn { background: var(--primary-purple); color: white; padding: 1rem 2.5rem; border-radius: 50px; border: none; font-weight: 700; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); transition: 0.3s; }
-        .load-more-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4); }
-
-        /* --- PRICING (FİYATLANDIRMA) STİLLERİ --- */
-        .pricing-section { padding: 6rem 20px; background: #e0f2fe; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; align-items: center; }
-        
-        .pricing-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 24px; padding: 2.5rem; position: relative; transition: 0.3s; }
-        .pricing-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: var(--primary-purple); }
-        
-        /* Popüler Kart Özel Stili */
-        .pricing-card.popular { border: 2px solid var(--primary-purple); box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15); transform: scale(1.05); z-index: 2; background: #fbfaff; }
-        .pricing-card.popular:hover { transform: scale(1.08); }
-        .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary-purple); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; }
-
-        .plan-header { text-align: center; margin-bottom: 2rem; }
-        .plan-name { font-size: 1.5rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem; }
-        .plan-price { font-size: 3rem; font-weight: 800; color: #1f2937; }
-        .plan-price span { font-size: 1rem; color: #6b7280; font-weight: 500; }
-        .plan-desc { color: #6b7280; margin-top: 0.5rem; }
-
-        .plan-features { list-style: none; margin-bottom: 2rem; }
-        .plan-features li { margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; color: #4b5563; }
-        .plan-features li.disabled { color: #9ca3af; text-decoration: line-through; opacity: 0.7; }
-
-        .pricing-btn { width: 100%; padding: 1rem; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 1rem; }
-        .pricing-btn.primary { background: var(--primary-purple); color: white; border: none; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3); }
-        .pricing-btn.primary:hover { background: #7c3aed; }
-        .pricing-btn.outline { background: transparent; border: 2px solid #e5e7eb; color: #1f2937; }
-        .pricing-btn.outline:hover { border-color: var(--primary-purple); color: var(--primary-purple); background: #f3f0ff; }
-
-        /* --- SSS --- */
-        .faq { padding: 3rem 20px 6rem; background: #bae6fd; }
-        .faq .section-header { max-width: 900px; margin-left: auto; margin-right: auto; }
-        .faq-item { background: rgba(255, 255, 255, 0.7); margin-bottom: 1rem; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden; border: 2px solid transparent; transition: 0.3s; max-width: 900px; margin-left: auto; margin-right: auto; }
-        .faq-item:hover { border-color: #8b5cf6; box-shadow: 0 6px 20px rgba(139, 92, 246, 0.15); }
-        .faq-q { padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 700; font-size: 1.1rem; }
-        .faq-a { padding: 0 2rem 2rem; color: var(--text-gray); display: none; line-height: 1.6; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.4s ease-out; }
-        .faq-a.active { display: block; max-height: 500px; }
-        .plus-icon { width: 30px; height: 30px; background: #6366f1; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-
-        /* --- FOOTER --- */
-        .footer { background: #0f172a; color: white; padding: 4rem 2rem 2rem; }
-        .footer-container { max-width: 1400px; margin: 0 auto; }
-        .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 4rem; margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid #334155; }
-        
-        /* Brand Section */
-        .footer-brand { }
-        .footer-logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 1rem; background: linear-gradient(90deg, #8b5cf6 0%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .footer-description { color: #94a3b8; line-height: 1.6; max-width: 300px; }
-        
-        /* Quick Links */
-        .footer-quick-links { }
-        .footer-section-title { color: #e2e8f0; margin-bottom: 1rem; font-size: 1.1rem; font-weight: 700; }
-        .footer-nav { list-style: none; }
-        .footer-nav li { margin-bottom: 0.7rem; }
-        .footer-nav a { text-decoration: none; color: #94a3b8; transition: 0.3s; font-size: 0.95rem; }
-        .footer-nav a:hover { color: #22d3ee; padding-left: 5px; }
-        
-        /* Newsletter */
-        .footer-newsletter { }
-        .footer-newsletter-title { color: #e2e8f0; margin-bottom: 1rem; font-size: 1rem; font-weight: 600; line-height: 1.5; }
-        .newsletter-form { display: flex; gap: 0; }
-        .newsletter-input { flex: 1; background: #1e293b; border: 1px solid #334155; padding: 0.9rem 1rem; border-radius: 8px 0 0 8px; color: white; outline: none; font-size: 0.95rem; transition: 0.3s; }
-        .newsletter-input:focus { border-color: #22d3ee; background: #334155; }
-        .newsletter-button { background: #22d3ee; border: none; padding: 0.9rem 1.8rem; border-radius: 0 8px 8px 0; color: #0f172a; font-weight: 700; cursor: pointer; transition: 0.3s; white-space: nowrap; }
-        .newsletter-button:hover { background: #06b6d4; }
-        
-        /* Footer Bottom */
-        .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; color: #64748b; font-size: 0.9rem; }
-        .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-        .footer-link { color: #64748b; text-decoration: none; transition: 0.3s; }
-        .footer-link:hover { color: #22d3ee; }
-        
-        /* ============================================ */
-        /* RESPONSIVE TASARIM - MEDIA QUERIES          */
-        /* ============================================ */
-        
-        /* Tablet ve Küçük Laptop (max-width: 1024px) */
-        @media (max-width: 1024px) {
-            .nav-container { padding: 1rem; }
-            .logo { font-size: 1.5rem; }
-            .logo-img { width: 40px; height: 40px; }
-            .nav-links { gap: 1.5rem; }
-            .search-bar input { width: 120px; }
-            .hero-title { font-size: 3.5rem; }
-            .course-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-            .feature-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-        }
-        
-        /* Tablet Portrait (max-width: 768px) */
-        @media (max-width: 768px) {
-            /* Header */
-            .nav-container { flex-wrap: wrap; padding: 0.8rem 1rem; }
-            .logo { font-size: 1.3rem; }
-            .logo-img { width: 35px; height: 35px; }
-            
-            .nav-links { 
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: white;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                transition: left 0.3s ease;
-                overflow-y: auto;
-                z-index: 999;
-            }
-            
-            .nav-links.active { left: 0; }
-            
-            .mobile-menu-toggle { display: block; }
-            
-            .search-bar { width: 100%; margin: 1rem 0; }
-            .search-bar input { width: 100%; }
-            
-            .auth-buttons { flex-direction: column; width: 100%; margin-top: 1rem; }
-            .btn-login, .btn-signup { width: 100%; text-align: center; }
-            
-            /* Hero */
-            .hero { height: auto; min-height: 80vh; padding: 100px 20px 60px; }
-            .hero-title { font-size: 2.5rem; margin-bottom: 2rem; }
-            .hero-btn { padding: 1rem 2rem; font-size: 1rem; }
-            
-            /* Partners */
-            .partners { padding: 3rem 15px; }
-            .partner-logos { gap: 2rem; font-size: 1.3rem; }
-            .partner-text { font-size: 0.8rem; }
-            
-            /* Courses */
-            .courses { padding: 4rem 15px; }
-            .section-header { font-size: 2rem; margin-bottom: 2.5rem; }
-            .course-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .course-img { height: 150px; font-size: 3rem; }
-            
-            /* Features */
-            .features { padding: 4rem 15px; }
-            .feature-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .feature-card { padding: 2rem 1.5rem; }
-            
-            /* Testimonials */
-            .testimonials-section { padding: 4rem 15px; }
-            .testimonials-title { font-size: 2rem; }
-            .testimonials-grid { grid-template-columns: 1fr; }
-            
-            /* Pricing */
-            .pricing-section { padding: 4rem 15px; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .pricing-card.popular { transform: scale(1); }
-            .pricing-card.popular:hover { transform: translateY(-10px); }
-            
-            /* FAQ */
-            .faq { padding: 2rem 15px 4rem; }
-            .faq-q { padding: 1.2rem 1.5rem; font-size: 1rem; }
-            
-            /* Footer */
-            .footer { padding: 3rem 1rem 1.5rem; }
-            .footer-main { grid-template-columns: 1fr; gap: 2rem; }
-            .footer-bottom { flex-direction: column; text-align: center; gap: 1.5rem; }
-            .footer-links { justify-content: center; flex-direction: column; gap: 1rem; }
-            .newsletter-form { flex-direction: column; }
-            .newsletter-input { border-radius: 8px; }
-            .newsletter-button { border-radius: 8px; padding: 0.9rem; }
-        }
-        
-        /* Mobile (max-width: 480px) */
-        @media (max-width: 480px) {
-            /* Header */
-            .logo { font-size: 1.1rem; }
-            .logo-img { width: 30px; height: 30px; }
-            
-            /* Hero */
-            .hero { padding: 80px 15px 50px; }
-            .hero-title { font-size: 1.8rem; letter-spacing: -0.5px; line-height: 1.2; }
-            .hero-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
-            
-            /* Partners */
-            .partner-logos { flex-direction: column; gap: 1rem; font-size: 1.1rem; }
-            .partner-text { font-size: 0.75rem; }
-            
-            /* Courses */
-            .section-header { font-size: 1.6rem; }
-            .course-title { font-size: 1rem; }
-            .course-desc { font-size: 0.85rem; }
-            .price { font-size: 1.2rem; }
-            .course-img { height: 140px; font-size: 2.8rem; }
-            .course-card { padding: 1rem; }
-            
-            /* Features */
-            .feature-icon { font-size: 2.2rem; }
-            .feature-card { padding: 1.5rem 1rem; }
-            .feature-card h3 { font-size: 1rem; }
-            .feature-card p { font-size: 0.85rem; }
-            
-            /* Testimonials */
-            .testimonials-title { font-size: 1.6rem; }
-            .testimonial-card { padding: 1.5rem; }
-            .testimonial-quote { font-size: 0.9rem; }
-            
-            /* Pricing */
-            .plan-name { font-size: 1.3rem; }
-            .plan-price { font-size: 2.5rem; }
-            
-            /* FAQ */
-            .faq-q { padding: 1rem 1.2rem; font-size: 0.95rem; }
-            .plus-icon { width: 28px; height: 28px; font-size: 1.1rem; }
-            
-            /* Stats */
-            .about-stats { grid-template-columns: 1fr; }
-            .stat-number { font-size: 1.5rem; }
-            
-            /* Modal */
-            .modal { padding: 2rem 1.2rem; max-width: 95%; }
-            .modal h2 { font-size: 1.4rem; }
-            .input-group input { padding: 0.7rem; font-size: 0.9rem; }
-            .modal-btn { padding: 0.9rem; font-size: 0.95rem; }
-            
-            /* User Profile */
-            .user-profile { flex-direction: column; align-items: center; }
-            #userWelcome { font-size: 0.85rem; }
-            
-            /* Chatbot */
-            .chatbot-toggle { width: 50px; height: 50px; font-size: 1.5rem; right: 10px; bottom: 15px; }
-            .chatbot-window { width: calc(100% - 20px); max-height: 400px; }
-            .chatbot-messages { max-height: 250px; }
-            .bot-msg, .user-msg { font-size: 0.85rem; padding: 0.6rem 0.9rem; }
-            
-            /* Footer */
-            .footer { padding: 2rem 1rem 1rem; }
-            .footer-logo { font-size: 1.6rem; }
-            .footer-section-title { font-size: 1rem; }
-            .newsletter-input { font-size: 0.9rem; padding: 0.8rem; }
-            .newsletter-button { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
-        }
-
-        /* --- MODAL (PENCERELER) --- */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 2000; align-items: center; justify-content: center; overflow-y: auto; padding: 20px 0; }
-        .modal { background: white; padding: 2.5rem; border-radius: 24px; width: 90%; max-width: 400px; max-height: 90vh; position: relative; animation: slideUp 0.3s ease-out; display: flex; flex-direction: column; margin: auto; }
-        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        
-        .close-modal { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; cursor: pointer; color: #94a3b8; transition: 0.3s; }
-        .close-modal:hover { color: #ef4444; }
-        
-        .modal h2 { text-align: center; margin-bottom: 1.5rem; color: #1f2937; }
-        .input-group { margin-bottom: 1rem; }
-        .input-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; color: #4b5563; }
-        .input-group input { width: 100%; padding: 0.8rem; border: 2px solid #e5e7eb; border-radius: 12px; outline: none; transition: 0.3s; }
-        .input-group input:focus { border-color: var(--primary-purple); }
-        
-        .modal-btn { width: 100%; padding: 1rem; background: var(--primary-purple); color: white; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 1rem; margin-top: 1rem; }
-        .modal-btn:hover { background: #7c3aed; }
-        
-        .switch-modal { text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #6b7280; }
-        .switch-modal a { color: var(--primary-purple); font-weight: 600; cursor: pointer; }
-
-        /* PROFİL MODAL */
-        .profile-modal { max-width: 600px; max-height: 85vh; overflow-y: auto; }
-        .profile-header { text-align: center; padding-bottom: 1.5rem; border-bottom: 2px solid #f3f4f6; margin-bottom: 1.5rem; position: sticky; top: 0; background: white; z-index: 10; }
-        .profile-avatar-large { width: 80px; height: 80px; background: linear-gradient(135deg, var(--primary-purple), var(--light-purple)); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 2rem; margin: 0 auto 1rem; }
-        .profile-section { margin-bottom: 1.5rem; }
-        .profile-section h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: #1f2937; }
-        .profile-info-grid { display: grid; gap: 0.5rem; }
-        .profile-info-item { background: #f9fafb; padding: 0.8rem; border-radius: 8px; display: flex; justify-content: space-between; }
-        .profile-info-label { font-weight: 600; color: #6b7280; }
-        .profile-info-value { color: #1f2937; }
-        .course-list { list-style: none; }
-        .course-list-item { background: #f0f9ff; padding: 0.8rem; border-radius: 8px; margin-bottom: 0.5rem; border-left: 3px solid var(--primary-purple); }
-        .empty-state { text-align: center; color: #9ca3af; padding: 2rem; background: #f9fafb; border-radius: 12px; }
-
-        /* HAKKIMIZDA MODAL */
-        .about-modal { max-width: 700px; max-height: 85vh; overflow-y: auto; }
-        .about-modal h2 { position: sticky; top: 0; background: white; z-index: 10; padding-bottom: 1rem; margin-bottom: 1rem; }
-        .about-content { line-height: 1.8; color: #4b5563; overflow-y: auto; }
-        .about-content h3 { color: #1f2937; margin-top: 1.5rem; margin-bottom: 0.8rem; }
-        .about-content ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
-        .stat-box { text-align: center; padding: 1rem; background: #f0f9ff; border-radius: 12px; }
-        .stat-number { font-size: 2rem; font-weight: 800; color: var(--primary-purple); }
-        .stat-label { font-size: 0.9rem; color: #6b7280; }
-
-        /* İLETİŞİM MODAL */
-        .contact-modal { max-width: 500px; text-align: center; max-height: 85vh; overflow-y: auto; }
-        .contact-email { background: #f0f9ff; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--primary-purple); }
-        .contact-email a { color: var(--primary-purple); font-weight: 700; font-size: 1.2rem; text-decoration: none; }
-        .contact-email a:hover { text-decoration: underline; }
-        .contact-info { color: #6b7280; line-height: 1.8; }
-
-        /* ÖZELLİK DETAY MODAL */
-        .feature-detail-modal { max-width: 550px; max-height: 85vh; overflow-y: auto; }
-        .feature-detail-icon { font-size: 4rem; text-align: center; margin-bottom: 1rem; }
-        .feature-detail-content { color: #4b5563; line-height: 1.8; }
-        .feature-detail-list { margin: 1rem 0; padding-left: 1.5rem; }
-        .feature-detail-list li { margin-bottom: 0.5rem; }
-
-        /* ARAMA SONUÇLARI */
-        .search-results { position: absolute; top: 100%; left: 0; right: 0; background: white; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); margin-top: 0.5rem; max-height: 400px; overflow-y: auto; display: none; z-index: 100; }
-        .search-result-item { padding: 1rem; border-bottom: 1px solid #f3f4f6; cursor: pointer; transition: 0.2s; }
-        .search-result-item:hover { background: #f9fafb; }
-        .search-result-item:last-child { border-bottom: none; }
-        .no-results { padding: 2rem; text-align: center; color: #9ca3af; }
-
-        /* --- CHATBOT (SKILLUP ASİSTAN) --- */
-        .chatbot-toggle {
-            position: fixed;
-            right: 20px;
-            bottom: 50px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-purple), #22d3ee);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-            cursor: pointer;
-            z-index: 1500;
-            font-size: 1.8rem;
-            opacity: 0.4;
-            transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
-        }
-        .chatbot-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
-            opacity: 1;
-        }
-        .chatbot-window {
-            position: fixed;
-            right: 20px;
-            bottom: 125px;
-            width: 360px;
-            max-height: 500px;
-            background: white;
-            border-radius: 20px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            z-index: 1500;
-            animation: slideUp 0.3s ease-out;
-        }
-        .chatbot-header {
-            background: linear-gradient(135deg, #8b5cf6, #22d3ee);
-            color: white;
-            padding: 1rem 1.2rem;
-            font-weight: 700;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.1rem;
-        }
-        .chatbot-close {
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 1.3rem;
-            cursor: pointer;
-            padding: 0;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s;
-        }
-        .chatbot-close:hover { transform: scale(1.2); }
-        .chatbot-messages {
-            padding: 1rem;
-            overflow-y: auto;
-            flex: 1;
-            background: #f9fafb;
-            max-height: 350px;
-        }
-        .bot-msg, .user-msg {
-            padding: 0.7rem 1rem;
-            margin: 0.5rem 0;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            animation: fadeIn 0.3s ease;
-        }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .bot-msg {
-            background: #eef2ff;
-            color: #1f2937;
-            border-left: 3px solid var(--primary-purple);
-            margin-right: 20px;
-        }
-        .user-msg {
-            background: #e0f2fe;
-            color: #1f2937;
-            border-left: 3px solid #22d3ee;
-            margin-left: 20px;
-        }
-        .chatbot-input {
-            display: flex;
-            gap: 8px;
-            padding: 1rem;
-            background: white;
-            border-top: 1px solid #e5e7eb;
-        }
-        .chatbot-input input {
-            flex: 1;
-            padding: 0.7rem 1rem;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            outline: none;
-            font-size: 0.95rem;
-            transition: border-color 0.3s;
-        }
-        .chatbot-input input:focus { border-color: var(--primary-purple); }
-        .chatbot-send {
-            background: var(--primary-purple);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            padding: 0.7rem 1.2rem;
-            cursor: pointer;
-            font-weight: 700;
-            transition: background 0.3s;
-        }
-        .chatbot-send:hover { background: #7c3aed; }
-        .chatbot-link {
-            color: var(--primary-purple);
-            font-weight: 700;
-            text-decoration: none;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        .chatbot-link:hover { color: #22d3ee; text-decoration: underline; }
-
-        @media (max-width: 480px) {
-            .chatbot-window { right: 10px; bottom: 85px; width: calc(100% - 20px); max-height: 450px; }
-            .chatbot-toggle { right: 15px; bottom: 15px; width: 55px; height: 55px; font-size: 1.6rem; }
-            .chatbot-messages { max-height: 300px; }
-        }
-
-    </style>
+    
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-
     <header>
         <div class="nav-container">
             <div class="logo" onclick="scrollToTop()">
@@ -656,7 +33,6 @@
                 <span class="logo-text">SkillUp</span>
             </div>
             
-            <!-- Mobile Menu Toggle -->
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Menü">
                 ☰
             </button>
@@ -771,7 +147,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section class="testimonials-section">
             <div class="testimonials-container">
                 <div class="testimonials-header">
@@ -780,7 +155,6 @@
                 </div>
 
                 <div class="testimonials-grid">
-                    <!-- Testimonial Card 1 -->
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
                             <span class="star">★</span>
@@ -801,7 +175,6 @@
                         </div>
                     </div>
 
-                    <!-- Testimonial Card 2 -->
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
                             <span class="star">★</span>
@@ -822,7 +195,6 @@
                         </div>
                     </div>
 
-                    <!-- Testimonial Card 3 -->
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
                             <span class="star">★</span>
@@ -854,7 +226,6 @@
                 </div>
                 
                 <div class="testimonials-grid" id="moreTestimonials" style="display: none; margin-top: 2rem;">
-                    <!-- Testimonial Card 4 -->
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
                             <span class="star">★</span>
@@ -875,7 +246,6 @@
                         </div>
                     </div>
 
-                    <!-- Testimonial Card 5 -->
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
                             <span class="star">★</span>
@@ -896,7 +266,6 @@
                         </div>
                     </div>
 
-                    <!-- Testimonial Card 6 -->
                     <div class="testimonial-card">
                         <div class="testimonial-stars">
                             <span class="star">★</span>
@@ -920,7 +289,6 @@
             </div>
         </section>
 
-        <!-- Pricing Section -->
         <section id="pricing" class="pricing-section">
             <h2 class="section-header">Üyelik Planları</h2>
             <p style="text-align: center; color: #6b7280; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
@@ -1000,7 +368,6 @@
         </section>
     </main>
 
-    <!-- Chatbot (SkillUp Asistan) -->
     <div id="chatbotToggle" class="chatbot-toggle" onclick="toggleChatbot()" title="SkillUp Asistan">
         💬
     </div>
@@ -1018,11 +385,9 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-main">
-                <!-- Brand Section -->
                 <div class="footer-brand">
                     <div class="footer-logo">SKILLUP</div>
                     <p class="footer-description">
@@ -1030,7 +395,6 @@
                     </p>
                 </div>
 
-                <!-- Quick Links Section -->
                 <div class="footer-quick-links">
                     <h4 class="footer-section-title">Hızlı Linkler</h4>
                     <ul class="footer-nav">
@@ -1043,7 +407,6 @@
                     </ul>
                 </div>
 
-                <!-- Newsletter Section -->
                 <div class="footer-newsletter">
                     <h4 class="footer-newsletter-title">
                         Yeni nesil mikro-öğrenme içerikleri için abone olun
@@ -1066,7 +429,6 @@
                 </div>
             </div>
 
-            <!-- Footer Bottom -->
             <div class="footer-bottom">
                 <p>© 2025 SkillUp. Tüm hakları saklıdır.</p>
                 <div class="footer-links">
@@ -1140,7 +502,6 @@
         </div>
     </div>
 
-    <!-- PROFİL MODAL -->
     <div id="profileModal" class="modal-overlay">
         <div class="modal profile-modal">
             <span class="close-modal" onclick="closeModal('profileModal')">&times;</span>
@@ -1177,7 +538,6 @@
         </div>
     </div>
 
-    <!-- HAKKIMIZDA MODAL -->
     <div id="aboutModal" class="modal-overlay">
         <div class="modal about-modal">
             <span class="close-modal" onclick="closeModal('aboutModal')">&times;</span>
@@ -1218,7 +578,6 @@
         </div>
     </div>
 
-    <!-- İLETİŞİM MODAL -->
     <div id="contactModal" class="modal-overlay">
         <div class="modal contact-modal">
             <span class="close-modal" onclick="closeModal('contactModal')">&times;</span>
@@ -1237,7 +596,6 @@
         </div>
     </div>
 
-    <!-- ÖZELLİK DETAY MODAL -->
     <div id="featureDetailModal" class="modal-overlay">
         <div class="modal feature-detail-modal">
             <span class="close-modal" onclick="closeModal('featureDetailModal')">&times;</span>
@@ -1249,7 +607,6 @@
         </div>
     </div>
 
-    <!-- GİZLİLİK POLİTİKASI MODAL -->
     <div id="privacyModal" class="modal-overlay">
         <div class="modal about-modal">
             <span class="close-modal" onclick="closeModal('privacyModal')">&times;</span>
@@ -1334,7 +691,6 @@
         </div>
     </div>
 
-    <!-- KULLANIM KOŞULLARI MODAL -->
     <div id="termsModal" class="modal-overlay">
         <div class="modal about-modal">
             <span class="close-modal" onclick="closeModal('termsModal')">&times;</span>
@@ -1465,7 +821,6 @@
         </div>
     </div>
 
-    <!-- KARİYER MODAL -->
     <div id="careerModal" class="modal-overlay">
         <div class="modal about-modal">
             <span class="close-modal" onclick="closeModal('careerModal')">&times;</span>
@@ -1505,7 +860,6 @@
                 <h3>👥 Açık Pozisyonlar</h3>
                 <p>Şu anda aşağıdaki pozisyonlar için yetenekli kişiler arıyoruz:</p>
                 
-                <!-- Pozisyon 1 -->
                 <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border-left: 4px solid #8b5cf6;">
                     <h4 style="color: #1f2937; margin-bottom: 0.5rem; font-size: 1.1rem;">💻 Frontend Developer</h4>
                     <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 0.5rem;"><strong>Lokasyon:</strong> Remote / Bandırma</p>
@@ -1518,7 +872,6 @@
                     </p>
                 </div>
 
-                <!-- Pozisyon 2 -->
                 <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border-left: 4px solid #22d3ee;">
                     <h4 style="color: #1f2937; margin-bottom: 0.5rem; font-size: 1.1rem;">🤖 AI / Data Intern</h4>
                     <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 0.5rem;"><strong>Lokasyon:</strong> Remote / Hybrid</p>
@@ -1531,7 +884,6 @@
                     </p>
                 </div>
 
-                <!-- Pozisyon 3 -->
                 <div style="background: #f9fafb; padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border-left: 4px solid #fbbf24;">
                     <h4 style="color: #1f2937; margin-bottom: 0.5rem; font-size: 1.1rem;">🎥 Content Creator</h4>
                     <p style="color: #6b7280; font-size: 0.95rem; margin-bottom: 0.5rem;"><strong>Lokasyon:</strong> Remote</p>
@@ -1564,840 +916,7 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // ==========================================
-        // KULLANICI YÖNETİM SİSTEMİ (localStorage)
-        // ==========================================
-        
-        let currentUser = null; // Aktif kullanıcı
-        
-        // Tüm kurslar listesi
-        const allCourses = [
-            { name: 'Web Geliştirme Masterclass', icon: '💻', desc: 'HTML, CSS, JavaScript ve modern framework\'lerle profesyonel web siteleri geliştirin.' },
-            { name: 'UI/UX Tasarım Temelleri', icon: '🎨', desc: 'Kullanıcı deneyimi odaklı modern arayüzler tasarlamayı öğrenin.' },
-            { name: 'Veri Bilimi & Analitik', icon: '📊', desc: 'Python ile veri analizi, görselleştirme ve makine öğrenimi tekniklerini keşfedin.' },
-            { name: 'Mobil Uygulama Geliştirme', icon: '📱', desc: 'React Native ile iOS ve Android için cross-platform uygulamalar oluşturun.' },
-            { name: 'Yapay Zeka ve Deep Learning', icon: '🤖', desc: 'TensorFlow ve PyTorch ile yapay zeka modelleri geliştirmeyi öğrenin.' },
-            { name: 'Siber Güvenlik Temelleri', icon: '🔒', desc: 'Ağ güvenliği, ethical hacking ve güvenlik testleri konularında uzmanlaşın.' }
-        ];
-        
-        // Sayfa yüklendiğinde oturum kontrolü
-        window.onload = function() {
-            checkSession();
-            handleScroll();
-            initScrollAnimations();
-        }
-        
-        // Scroll animasyonları için intersection observer
-        function initScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // Animasyon eklenecek elementler
-            document.querySelectorAll('.course-card, .feature-card, .testimonial-card').forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                el.style.transition = 'all 0.6s ease-out';
-                observer.observe(el);
-            });
-        }
-        
-        // Scroll event listener ekle
-        window.addEventListener('scroll', handleScroll);
-        
-        // Scroll olayını yönet - header'ı şeffaftan opak'a geçir
-        function handleScroll() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        }
-        
-        // Oturum kontrolü - kullanıcı daha önce giriş yapmış mı?
-        function checkSession() {
-            try {
-                const savedUser = localStorage.getItem('currentUser');
-                if (savedUser) {
-                    currentUser = JSON.parse(savedUser);
-                    updateUIAfterLogin();
-                }
-            } catch (error) {
-                console.error('Oturum yükleme hatası:', error);
-                localStorage.removeItem('currentUser');
-            }
-        }
-        
-        // Kayıt Olma İşlemi
-        function handleSignup(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('signupName').value.trim();
-            const email = document.getElementById('signupEmail').value.trim();
-            const username = document.getElementById('signupUsername').value.trim();
-            const password = document.getElementById('signupPassword').value;
-            
-            // Validasyonlar
-            if (name.length < 3) {
-                alert('❌ İsim en az 3 karakter olmalıdır!');
-                return;
-            }
-            
-            if (!email.includes('@') || !email.includes('.')) {
-                alert('❌ Geçerli bir e-posta adresi girin!');
-                return;
-            }
-            
-            if (username.length < 3) {
-                alert('❌ Kullanıcı adı en az 3 karakter olmalıdır!');
-                return;
-            }
-            
-            if (password.length < 6) {
-                alert('❌ Şifre en az 6 karakter olmalıdır!');
-                return;
-            }
-            
-            // Kullanıcı adının daha önce alınıp alınmadığını kontrol et
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const existingUser = users.find(u => u.username === username || u.email === email);
-            
-            if (existingUser) {
-                alert('Bu kullanıcı adı veya e-posta zaten kayıtlı! Lütfen başka bir tane deneyin.');
-                return;
-            }
-            
-            // Yeni kullanıcı oluştur
-            const newUser = {
-                name: name,
-                email: email,
-                username: username,
-                password: password,
-                registeredAt: new Date().toISOString(),
-                courses: [] // Kullanıcının aldığı kurslar
-            };
-            
-            // Kullanıcıları listeye ekle ve kaydet
-            users.push(newUser);
-            localStorage.setItem('users', JSON.stringify(users));
-            
-            // Otomatik giriş yap
-            currentUser = newUser;
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            
-            // UI'ı güncelle
-            updateUIAfterLogin();
-            closeModal('signupModal');
-            
-            alert('🎉 Hoş geldin ' + name + '! Hesabın başarıyla oluşturuldu.');
-            
-            // Formu temizle
-            e.target.reset();
-        }
-        
-        // Giriş Yapma İşlemi
-        function handleLogin(e) {
-            e.preventDefault();
-            
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            // Kayıtlı kullanıcıları kontrol et
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = users.find(u => u.username === username && u.password === password);
-            
-            if (!user) {
-                alert('❌ Kullanıcı adı veya şifre hatalı!');
-                return;
-            }
-            
-            // Başarılı giriş
-            currentUser = user;
-            localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            
-            updateUIAfterLogin();
-            closeModal('loginModal');
-            
-            alert('✅ Hoş geldin ' + user.name + '!');
-            
-            // Formu temizle
-            e.target.reset();
-        }
-        
-        // Giriş sonrası UI güncellemesi
-        function updateUIAfterLogin() {
-            document.getElementById('authGroup').style.display = 'none';
-            document.getElementById('userProfile').style.display = 'flex';
-            
-            // Kullanıcı adını ve avatarı güncelle
-            const initials = currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase();
-            document.getElementById('userAvatar').textContent = initials;
-            document.getElementById('userWelcome').textContent = 'Hoş geldin, ' + currentUser.name.split(' ')[0] + '!';
-        }
-        
-        // Çıkış Yapma
-        function logout() {
-            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
-                localStorage.removeItem('currentUser');
-                currentUser = null;
-                
-                // UI'ı eski haline getir
-                document.getElementById('authGroup').style.display = 'flex';
-                document.getElementById('userProfile').style.display = 'none';
-                
-                closeModal('profileModal'); // Profil modalı varsa kapat
-                alert('Başarıyla çıkış yaptınız!');
-            }
-        }
-        
-        // ===========================================
-        // PROFİL MODAL FONKSİYONLARI
-        // ===========================================
-        
-        // Profil modalını aç ve verileri doldur
-        function openProfileModal() {
-            if (!currentUser) return;
-            
-            // Avatar
-            const initials = currentUser.name.split(' ').map(n => n[0]).join('').toUpperCase();
-            document.getElementById('profileAvatarLarge').textContent = initials;
-            
-            // Temel bilgiler
-            document.getElementById('profileName').textContent = currentUser.name;
-            document.getElementById('profileEmail').textContent = currentUser.email;
-            document.getElementById('profileUsername').textContent = currentUser.username;
-            
-            // Üyelik tarihi
-            const joinDate = new Date(currentUser.registeredAt);
-            document.getElementById('profileJoinDate').textContent = joinDate.toLocaleDateString('tr-TR');
-            
-            // Kurs sayısı
-            document.getElementById('profileCourseCount').textContent = currentUser.courses.length;
-            
-            // Kurs listesi
-            const coursesList = document.getElementById('profileCoursesList');
-            if (currentUser.courses.length === 0) {
-                coursesList.innerHTML = '<div class="empty-state">📚 Henüz hiç kurs almadınız.<br><small>Hemen keşfetmeye başlayın!</small></div>';
-            } else {
-                coursesList.innerHTML = '<ul class="course-list">' + 
-                    currentUser.courses.map(course => `<li class="course-list-item">✅ ${course}</li>`).join('') + 
-                    '</ul>';
-            }
-            
-            openModal('profileModal');
-        }
-        
-        // ===========================================
-        // ARAMA FONKSİYONU
-        // ===========================================
-        
-        function handleSearch(event) {
-            const searchTerm = event.target.value.toLowerCase().trim();
-            const resultsContainer = document.getElementById('searchResults');
-            
-            if (searchTerm.length === 0) {
-                resultsContainer.style.display = 'none';
-                return;
-            }
-            
-            // Kursları filtrele
-            const filteredCourses = allCourses.filter(course => 
-                course.name.toLowerCase().includes(searchTerm) || 
-                course.desc.toLowerCase().includes(searchTerm)
-            );
-            
-            if (filteredCourses.length === 0) {
-                resultsContainer.innerHTML = '<div class="no-results">🔍 Aradığınız kurs bulunamadı.</div>';
-            } else {
-                resultsContainer.innerHTML = filteredCourses.map(course => `
-                    <div class="search-result-item" onclick="checkCourseAccess('${course.name}'); document.getElementById('searchResults').style.display='none'; document.getElementById('searchInput').value='';">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span style="font-size: 1.5rem;">${course.icon}</span>
-                            <div style="flex: 1;">
-                                <strong>${course.name}</strong>
-                                <div style="font-size: 0.85rem; color: #6b7280;">${course.desc.substring(0, 60)}...</div>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-            }
-            
-            resultsContainer.style.display = 'block';
-        }
-        
-        // Arama dışına tıklayınca sonuçları kapat
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.search-bar')) {
-                document.getElementById('searchResults').style.display = 'none';
-            }
-        });
-        
-        // ===========================================
-        // NEWSLETTER FONKSİYONU
-        // ===========================================
-        
-        function handleNewsletter(e) {
-            e.preventDefault();
-            const email = document.getElementById('newsletterEmail').value;
-            
-            // Aboneleri kaydet
-            let subscribers = JSON.parse(localStorage.getItem('newsletterSubscribers')) || [];
-            
-            if (subscribers.includes(email)) {
-                alert('⚠️ Bu e-posta adresi zaten bültenimize kayıtlı!');
-                return;
-            }
-            
-            subscribers.push(email);
-            localStorage.setItem('newsletterSubscribers', JSON.stringify(subscribers));
-            
-            alert('🎉 Bültene başarıyla abone oldunuz!\n\nEn yeni içeriklerden haberdar olacaksınız.');
-            e.target.reset();
-        }
-        
-        // ===========================================
-        // DİĞER YARDIMCI FONKSİYONLAR
-        // ===========================================
-        
-        // Mobile menü toggle
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            const menuToggle = document.querySelector('.mobile-menu-toggle');
-            navLinks.classList.toggle('active');
-            
-            // İkon değiştirme
-            if (navLinks.classList.contains('active')) {
-                menuToggle.innerHTML = '✕';
-            } else {
-                menuToggle.innerHTML = '☰';
-            }
-        }
-        
-        // Menü linklerine tıklanınca mobil menüyü kapat
-        document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-links a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    const nav = document.querySelector('.nav-links');
-                    const menuToggle = document.querySelector('.mobile-menu-toggle');
-                    if (nav.classList.contains('active')) {
-                        nav.classList.remove('active');
-                        menuToggle.innerHTML = '☰';
-                    }
-                });
-            });
-        });
-        
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // Daha fazla yorum göster
-        function loadMoreTestimonials() {
-            const moreTestimonials = document.getElementById('moreTestimonials');
-            const loadMoreBtn = document.getElementById('loadMoreTestimonials');
-            const hideMoreBtn = document.getElementById('hideMoreTestimonials');
-            
-            moreTestimonials.style.display = 'grid';
-            loadMoreBtn.style.display = 'none';
-            hideMoreBtn.style.display = 'inline-block';
-            
-            // Yumuşak kaydırma
-            setTimeout(() => {
-                moreTestimonials.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
-        }
-        
-        // Ek yorumları gizle
-        function hideMoreTestimonials() {
-            const moreTestimonials = document.getElementById('moreTestimonials');
-            const loadMoreBtn = document.getElementById('loadMoreTestimonials');
-            const hideMoreBtn = document.getElementById('hideMoreTestimonials');
-            
-            moreTestimonials.style.display = 'none';
-            loadMoreBtn.style.display = 'inline-block';
-            hideMoreBtn.style.display = 'none';
-            
-            // Butonlara yumuşak kaydırma
-            loadMoreBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        
-        // ===========================================
-        // ÖZELLİK DETAY FONKSİYONU
-        // ===========================================
-        
-        function openFeatureDetail(featureType) {
-            const features = {
-                expert: {
-                    icon: '🎓',
-                    title: 'Uzman Eğitmenler',
-                    content: `
-                        <p>SkillUp'ta sektörün en deneyimli ve başarılı isimleriyle tanışın!</p>
-                        <ul class="feature-detail-list">
-                            <li><strong>10+ yıl deneyimli</strong> eğitmenler</li>
-                            <li>Google, Microsoft, Meta gibi şirketlerde <strong>çalışmış profesyoneller</strong></li>
-                            <li><strong>Gerçek dünya projeleri</strong> ve case study'ler</li>
-                            <li>Birebir <strong>mentörlük</strong> imkanı</li>
-                            <li>Canlı Q&A seansları ve <strong>interaktif dersler</strong></li>
-                        </ul>
-                        <p>Eğitmenlerimiz sadece teoriyi değil, <strong>güncel sektör bilgilerini</strong> de paylaşır!</p>
-                    `
-                },
-                flexible: {
-                    icon: '⏰',
-                    title: 'Esnek Öğrenme',
-                    content: `
-                        <p>Öğrenmeyi hayatınıza siz uydurun, hayatınızı öğrenmeye değil!</p>
-                        <ul class="feature-detail-list">
-                            <li><strong>7/24 erişim</strong> - İstediğiniz zaman, istediğiniz yerden</li>
-                            <li><strong>Mobil uyumlu</strong> - Telefon, tablet, bilgisayar</li>
-                            <li><strong>İndirilebilir içerikler</strong> - Çevrimdışı öğrenme</li>
-                            <li><strong>Kendi hızınızda</strong> ilerleyin - Acele yok!</li>
-                            <li><strong>Duraklatma & Devam</strong> - Kaldığınız yerden devam edin</li>
-                        </ul>
-                        <p>Sabah kahvesiyle, öğle arasında veya gece yarısı - <strong>sizin seçiminiz!</strong></p>
-                    `
-                },
-                certificate: {
-                    icon: '📜',
-                    title: 'Sertifika Programı',
-                    content: `
-                        <p>Kursu tamamladığınızda profesyonel kariyerinize değer katacak sertifikalar kazanın!</p>
-                        <ul class="feature-detail-list">
-                            <li><strong>Blockchain doğrulama</strong> - Sahtecilik önlenir</li>
-                            <li><strong>LinkedIn paylaşımı</strong> - Tek tıkla profilde göster</li>
-                            <li><strong>PDF ve dijital format</strong> - İndir veya paylaş</li>
-                            <li><strong>İşveren onaylı</strong> - Sektörde kabul görür</li>
-                            <li><strong>QR kod doğrulama</strong> - Hızlı erişim</li>
-                        </ul>
-                        <p>Sertifikalarınız, <strong>gerçek yeteneklerinizin kanıtı</strong> olacak!</p>
-                    `
-                },
-                community: {
-                    icon: '💬',
-                    title: 'Topluluk Desteği',
-                    content: `
-                        <p>Yalnız değilsiniz! 50.000+ öğrenci topluluğuna katılın.</p>
-                        <ul class="feature-detail-list">
-                            <li><strong>Özel Discord sunucusu</strong> - Anlık destek</li>
-                            <li><strong>Haftalık webinarlar</strong> - Canlı etkileşim</li>
-                            <li><strong>Proje paylaşım platformu</strong> - Feedback alın</li>
-                            <li><strong>Networking etkinlikleri</strong> - Bağlantılar kurun</li>
-                            <li><strong>Mentor bulma</strong> - Deneyimlilerden öğrenin</li>
-                        </ul>
-                        <p>Birlikte öğrenmek, <strong>daha hızlı ve eğlenceli</strong>dir!</p>
-                    `
-                },
-                mobile: {
-                    icon: '📱',
-                    title: 'Mobil Erişim',
-                    content: `
-                        <p>Tüm cihazlarınızda kesintisiz öğrenme deneyimi!</p>
-                        <ul class="feature-detail-list">
-                            <li><strong>iOS ve Android uygulaması</strong> - Native deneyim</li>
-                            <li><strong>Otomatik senkronizasyon</strong> - Cihazlar arası geçiş</li>
-                            <li><strong>Offline mod</strong> - İnternetsiz öğrenme</li>
-                            <li><strong>Push bildirimleri</strong> - Hatırlatmalar ve güncellemeler</li>
-                            <li><strong>Responsive tasarım</strong> - Her ekran boyutunda mükemmel</li>
-                        </ul>
-                        <p>Otobüste, parkta, evde - <strong>her yerde öğrenin!</strong></p>
-                    `
-                },
-                updates: {
-                    icon: '🔄',
-                    title: 'Sürekli Güncelleme',
-                    content: `
-                        <p>Teknoloji hızla değişiyor, biz de! İçeriklerimiz her zaman güncel.</p>
-                        <ul class="feature-detail-list">
-                            <li><strong>Aylık içerik güncellemeleri</strong> - Yeni konular eklenir</li>
-                            <li><strong>Sektör trendleri</strong> - En son teknolojiler</li>
-                            <li><strong>Bug fix ve iyileştirmeler</strong> - Sürekli gelişim</li>
-                            <li><strong>Ücretsiz erişim</strong> - Güncellemeler için ekstra ücret yok</li>
-                            <li><strong>Feedback sistemi</strong> - Önerileriniz önemli</li>
-                        </ul>
-                        <p>Bir kez satın alın, <strong>ömür boyu güncellemelere erişin!</strong></p>
-                    `
-                },
-                format: {
-                    icon: '🎬',
-                    title: 'Format Üstünlüğü',
-                    content: `
-                        <p>Modern dijital dünyanın formatını kullanarak öğrenmeyi yeniden tanımlıyoruz!</p>
-                        <ul class="feature-detail-list">
-                            <li><strong>Dikey video formatı</strong> - Mobil öncelikli tasarım</li>
-                            <li><strong>2-10 dakikalık modüller</strong> - Mikro-öğrenme yaklaşımı</li>
-                            <li><strong>TikTok tarzı akış</strong> - Sürükleyici içerik deneyimi</li>
-                            <li><strong>Hızlı geçişler</strong> - Dikkat dağınıklığı yok</li>
-                            <li><strong>%80 tamamlama oranı</strong> - Gelenekselde sadece %20</li>
-                        </ul>
-                        <p>Öğrenmeyi <strong>sosyal medya kadar bağımlılık yapıcı</strong> hale getirdik!</p>
-                    `
-                },
-                personal: {
-                    icon: '🎯',
-                    title: 'Kişisel İçerikler',
-                    content: `
-                        <p>Herkes farklıdır, öğrenme yolculuğunuz da öyle olmalı!</p>
-                        <ul class="feature-detail-list">
-                            <li><strong>Yapay zeka destekli öneriler</strong> - İlgi alanlarınıza göre</li>
-                            <li><strong>Öğrenme hızı analizi</strong> - Size özel tempo ayarı</li>
-                            <li><strong>Kişisel ilerleme takibi</strong> - Hedefinize ne kadar yakınsınız?</li>
-                            <li><strong>Özel öğrenme yolları</strong> - Kariyerinize uygun rotalar</li>
-                            <li><strong>Adaptif içerik</strong> - Seviyeniz otomatik ayarlanır</li>
-                        </ul>
-                        <p>Öğrenme deneyiminiz <strong>tamamen size özel!</strong></p>
-                    `
-                }
-            };
-            
-            const feature = features[featureType];
-            if (feature) {
-                document.getElementById('featureIcon').textContent = feature.icon;
-                document.getElementById('featureTitle').textContent = feature.title;
-                document.getElementById('featureContent').innerHTML = feature.content;
-                openModal('featureDetailModal');
-            }
-        }
-
-        // Modal Açma
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Modal Kapama
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // Modallar arası geçiş (Giriş -> Kayıt vb.)
-        function switchModal(closeId, openId) {
-            closeModal(closeId);
-            openModal(openId);
-        }
-
-        // Kursa Tıklanınca Çalışan AKILLI Fonksiyon
-        function checkCourseAccess(courseName) {
-            const titleEl = document.getElementById('c-title');
-            const descEl = document.getElementById('c-desc');
-            const btnEl = document.getElementById('c-btn');
-            const iconEl = document.getElementById('c-icon');
-
-            titleEl.textContent = courseName;
-            
-            if (currentUser) {
-                // EĞER GİRİŞ YAPILDIYSA
-                iconEl.textContent = "✅";
-                descEl.textContent = "Tebrikler! Giriş yaptığınız için bu kursa hemen başlayabilirsiniz. İlk derse gitmek için butona tıklayın.";
-                btnEl.textContent = "Derse Başla ▶";
-                btnEl.onclick = function() {
-                    // Kursu kullanıcının kurs listesine ekle
-                    if (!currentUser.courses.includes(courseName)) {
-                        currentUser.courses.push(courseName);
-                        updateUserData();
-                    }
-                    alert('🎓 ' + courseName + ' dersine yönlendiriliyorsunuz...\n\nSatın alınan kurslarınız: ' + currentUser.courses.join(', '));
-                    closeModal('courseModal');
-                };
-            } else {
-                // EĞER MİSAFİR İSE
-                iconEl.textContent = "🔒";
-                descEl.textContent = "Bu kursun içeriğine erişmek ve sertifika programına katılmak için lütfen önce giriş yapın.";
-                btnEl.textContent = "Giriş Yap ve Abone Ol";
-                btnEl.onclick = function() {
-                    switchModal('courseModal', 'loginModal');
-                };
-            }
-
-            openModal('courseModal');
-        }
-        
-        // Kullanıcı verilerini güncelle
-        function updateUserData() {
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const index = users.findIndex(u => u.username === currentUser.username);
-            if (index !== -1) {
-                users[index] = currentUser;
-                localStorage.setItem('users', JSON.stringify(users));
-                localStorage.setItem('currentUser', JSON.stringify(currentUser));
-            }
-        }
-
-        // SSS (Accordion) Aç/Kapa
-        function toggleFaq(element) {
-            const answer = element.nextElementSibling;
-            const icon = element.querySelector('.plus-icon');
-            const isOpen = answer.classList.contains('active');
-            
-            // Tüm FAQ'ları kapat
-            document.querySelectorAll('.faq-a').forEach(item => {
-                item.classList.remove('active');
-                item.style.maxHeight = '0';
-                item.style.paddingBottom = '0';
-            });
-            document.querySelectorAll('.plus-icon').forEach(item => {
-                item.innerHTML = '+';
-                item.style.background = '#6366f1';
-            });
-            
-            // Eğer tıklanan kapalıysa, aç
-            if (!isOpen) {
-                answer.classList.add('active');
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-                answer.style.paddingBottom = '2rem';
-                icon.innerHTML = '-';
-                icon.style.background = '#8b5cf6';
-            }
-        }
-
-        // Modal dışına tıklayınca kapatma
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal-overlay')) {
-                event.target.style.display = 'none';
-            }
-        }
-
-        // ==========================================
-        // CHATBOT (SKILLUP ASİSTAN)
-        // ==========================================
-
-        // Chatbot penceresini aç/kapat
-        function toggleChatbot() {
-            const window = document.getElementById('chatbotWindow');
-            const isVisible = window.style.display === 'flex';
-            window.style.display = isVisible ? 'none' : 'flex';
-            
-            if (!isVisible) {
-                const input = document.getElementById('chatbotInput');
-                if (input) input.focus();
-            }
-        }
-
-        // Kullanıcı mesajı gönder
-        function sendChatMessage() {
-            const input = document.getElementById('chatbotInput');
-            const text = (input.value || '').trim();
-            if (!text) return;
-            
-            appendUserMessage(text);
-            input.value = '';
-            
-            // Bot yanıtını biraz gecikmeyle göster
-            setTimeout(() => {
-                const response = getBotResponse(text);
-                appendBotMessage(response);
-            }, 300);
-        }
-
-        // Kullanıcı mesajını ekle
-        function appendUserMessage(text) {
-            const messagesDiv = document.getElementById('chatbotMessages');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'user-msg';
-            msgDiv.textContent = text;
-            messagesDiv.appendChild(msgDiv);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        }
-
-        // Bot mesajını ekle
-        function appendBotMessage(html) {
-            const messagesDiv = document.getElementById('chatbotMessages');
-            const msgDiv = document.createElement('div');
-            msgDiv.className = 'bot-msg';
-            msgDiv.innerHTML = html;
-            messagesDiv.appendChild(msgDiv);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-        }
-
-        // Bot yanıtını oluştur (kural tabanlı)
-        function getBotResponse(text) {
-            const t = text.toLowerCase();
-
-            // Hedef bazlı kurs önerileri
-            const goalResponse = getGoalBasedRecommendation(t);
-            if (goalResponse) return goalResponse;
-
-            // Kurs arama
-            if (t.includes('kurs') || t.includes('eğitim') || t.includes('ders')) {
-                const matches = allCourses.filter(c => 
-                    t.includes(c.name.toLowerCase()) || 
-                    c.name.toLowerCase().includes(t.split(' ')[0]) ||
-                    (c.desc || '').toLowerCase().includes(t)
-                );
-                
-                if (matches.length > 0) {
-                    const links = matches.slice(0, 4).map(c => 
-                        `<a class="chatbot-link" onclick="checkCourseAccess('${c.name}'); toggleChatbot();">${c.icon} ${c.name}</a>`
-                    ).join('<br>');
-                    return `Şu kursları buldum:<br>${links}`;
-                }
-                
-                return `Hangi alanda kurs arıyorsunuz? 💡<br>Örnekler: "Web Geliştirme", "UI/UX", "Veri Bilimi", "AI", "Mobil", "Siber Güvenlik"`;
-            }
-
-            // Giriş / Kayıt
-            if (t.includes('giriş') || t.includes('login') || t.includes('oturum')) {
-                return `Giriş yapmak için <a class="chatbot-link" onclick="openModal('loginModal'); toggleChatbot();">buraya tıklayın</a> 🔐`;
-            }
-            if (t.includes('kayıt') || t.includes('signup') || t.includes('üye ol')) {
-                return `Kayıt olmak için <a class="chatbot-link" onclick="openModal('signupModal'); toggleChatbot();">buraya tıklayın</a> ✨`;
-            }
-
-            // Profil
-            if (t.includes('profil') || t.includes('hesap')) {
-                if (currentUser) {
-                    return `Profilinizi görmek için <a class="chatbot-link" onclick="openProfileModal(); toggleChatbot();">buraya tıklayın</a> 👤`;
-                }
-                return `Önce giriş yapmanız gerekiyor. <a class="chatbot-link" onclick="openModal('loginModal'); toggleChatbot();">Giriş Yap</a> 🔐`;
-            }
-
-            // Abonelik / Fiyat
-            if (t.includes('abonelik') || t.includes('fiyat') || t.includes('ücret') || t.includes('plan') || t.includes('premium')) {
-                return `💰 Üyelik planlarımızı görmek için <a class="chatbot-link" href="#pricing" onclick="toggleChatbot();">Fiyatlandırma</a> bölümüne bakabilirsiniz.`;
-            }
-
-            // Sertifika
-            if (t.includes('sertifika')) {
-                return `🎓 Kursları tamamlayanlara <strong>blockchain doğrulamalı sertifika</strong> veriyoruz. LinkedIn'de paylaşabilir, QR kod ile doğrulayabilirsiniz!`;
-            }
-
-            // İletişim
-            if (t.includes('iletişim') || t.includes('destek') || t.includes('yardım') || t.includes('mail') || t.includes('e-posta')) {
-                return `📧 Bizimle iletişime geçmek için <a class="chatbot-link" onclick="openModal('contactModal'); toggleChatbot();">İletişim</a> sayfasına göz atın.`;
-            }
-
-            // SSS
-            if (t.includes('sss') || t.includes('sıkça') || t.includes('sorular')) {
-                return `❓ Sık sorulan sorular için <a class="chatbot-link" href="#faq" onclick="toggleChatbot();">SSS</a> bölümünü inceleyin.`;
-            }
-
-            // Hakkımızda
-            if (t.includes('hakkında') || t.includes('hakkımızda') || t.includes('vizyonunuz')) {
-                return `ℹ️ SkillUp hakkında bilgi almak için <a class="chatbot-link" onclick="openModal('aboutModal'); toggleChatbot();">Hakkımızda</a> sayfasını ziyaret edin.`;
-            }
-
-            // Özellikler
-            if (t.includes('özellik') || t.includes('ne sunuyorsunuz')) {
-                return `✨ Platform özelliklerimizi görmek için sayfayı aşağı kaydırın veya <a class="chatbot-link" href="#features" onclick="toggleChatbot();">Özellikler</a> bölümüne göz atın.`;
-            }
-
-            // Anasayfa
-            if (t.includes('anasayfa') || t.includes('ana sayfa') || t.includes('başa dön')) {
-                return `🏠 Anasayfaya dönmek için <a class="chatbot-link" onclick="scrollToTop(); toggleChatbot();">buraya tıklayın</a>.`;
-            }
-
-            // Kariyer / İş
-            if (t.includes('kariyer') || t.includes('iş') || t.includes('çalış')) {
-                return `💼 Kariyer fırsatları için <a class="chatbot-link" onclick="openModal('careerModal'); toggleChatbot();">Kariyer</a> sayfamızı ziyaret edin.`;
-            }
-
-            // Varsayılan yanıt
-            return `🤔 Size şu konularda yardımcı olabilirim:<br>
-                • <strong>Kurs arama</strong> (örn: "Web geliştirme kursu")<br>
-                • <strong>Kariyer hedefi</strong> (örn: "Frontend developer olmak istiyorum")<br>
-                • <strong>Giriş/Kayıt</strong><br>
-                • <strong>Abonelik ve fiyatlar</strong><br>
-                • <strong>Sertifika bilgisi</strong><br>
-                • <strong>İletişim ve destek</strong><br><br>
-                Bir soru sorun veya yardım isteyin! 😊`;
-        }
-
-        // Hedef bazlı kurs önerileri
-        function getGoalBasedRecommendation(text) {
-            const goalPlans = [
-                {
-                    keywords: ['frontend', 'front-end', 'front end', 'ön yüz'],
-                    title: 'Frontend Developer',
-                    courses: ['Web Geliştirme Masterclass', 'UI/UX Tasarım Temelleri', 'Mobil Uygulama Geliştirme']
-                },
-                {
-                    keywords: ['fullstack', 'full stack', 'full-stack', 'tam yığın'],
-                    title: 'Full-Stack Developer',
-                    courses: ['Web Geliştirme Masterclass', 'Veri Bilimi & Analitik', 'Siber Güvenlik Temelleri']
-                },
-                {
-                    keywords: ['veri bilimi', 'data science', 'veri analisti', 'data analyst'],
-                    title: 'Veri Bilimci',
-                    courses: ['Veri Bilimi & Analitik', 'Yapay Zeka ve Deep Learning']
-                },
-                {
-                    keywords: ['ai', 'yapay zeka', 'machine learning', 'ml', 'deep learning'],
-                    title: 'AI/ML Geliştirici',
-                    courses: ['Yapay Zeka ve Deep Learning', 'Veri Bilimi & Analitik']
-                },
-                {
-                    keywords: ['mobil', 'mobile', 'react native', 'android', 'ios'],
-                    title: 'Mobil Geliştirici',
-                    courses: ['Mobil Uygulama Geliştirme', 'Web Geliştirme Masterclass', 'UI/UX Tasarım Temelleri']
-                },
-                {
-                    keywords: ['siber', 'güvenlik', 'cyber', 'security', 'hacker'],
-                    title: 'Siber Güvenlik Uzmanı',
-                    courses: ['Siber Güvenlik Temelleri', 'Web Geliştirme Masterclass']
-                },
-                {
-                    keywords: ['ui', 'ux', 'tasarım', 'designer', 'tasarımcı'],
-                    title: 'UI/UX Tasarımcı',
-                    courses: ['UI/UX Tasarım Temelleri', 'Web Geliştirme Masterclass']
-                }
-            ];
-
-            // Hedef anahtar kelimelerini kontrol et
-            const goalTriggers = ['hedef', 'kariyer', 'olmak istiyorum', 'olmak', 'plan', 'yol haritası'];
-            const isGoalIntent = goalTriggers.some(k => text.includes(k));
-
-            // Eşleşen hedef planını bul
-            let matchedGoal = null;
-            for (const goal of goalPlans) {
-                if (goal.keywords.some(k => text.includes(k))) {
-                    matchedGoal = goal;
-                    break;
-                }
-            }
-
-            if (!matchedGoal && !isGoalIntent) return null;
-
-            if (!matchedGoal) {
-                return `🎯 Hangi kariyer hedefine yönelik yardım istiyorsunuz?<br><br>
-                    Örnek hedefler:<br>
-                    • "Frontend developer olmak istiyorum"<br>
-                    • "Veri bilimci olmak istiyorum"<br>
-                    • "AI/ML alanında çalışmak istiyorum"<br>
-                    • "Mobil geliştirici olmak istiyorum"<br>
-                    • "UI/UX tasarımcı olmak istiyorum"`;
-            }
-
-            const courseLinks = matchedGoal.courses
-                .map((name, i) => `${i + 1}. <a class="chatbot-link" onclick="checkCourseAccess('${name}'); toggleChatbot();">${name}</a>`)
-                .join('<br>');
-
-            return `🎯 <strong>${matchedGoal.title}</strong> hedefi için önerilen öğrenme yolu:<br><br>
-                ${courseLinks}<br><br>
-                💡 Bu kursları sırasıyla tamamlamanızı öneriyorum. Başarılar! 🚀`;
-        }
-
-        // Enter tuşu ile mesaj gönder
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatInput = document.getElementById('chatbotInput');
-            if (chatInput) {
-                chatInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        e.preventDefault();
-                        sendChatMessage();
-                    }
-                });
-            }
-        });
-
-    </script>
+    
+    <script src="JavaScript/script.js"></script>
 </body>
 </html>
