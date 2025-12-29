@@ -144,16 +144,6 @@
   <script src="js/api.js"></script>
   <script src="js/auth.js"></script>
   <script>
-    // Mobile menu toggle
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    const navbarMenu = document.getElementById('navbarMenu');
-    
-    if (mobileMenuToggle) {
-      mobileMenuToggle.addEventListener('click', () => {
-        navbarMenu.classList.toggle('active');
-      });
-    }
-
     // Handle registration form submission
     document.getElementById('registerForm').addEventListener('submit', async (e) => {
       e.preventDefault();

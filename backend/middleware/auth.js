@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 
-const SECRET_KEY = 'your-secret-key-change-in-production';
+// Use environment variable for JWT secret, with fallback for development
+const SECRET_KEY = process.env.JWT_SECRET || 'your-secret-key-change-in-production-NEVER-USE-IN-PROD';
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];

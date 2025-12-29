@@ -74,11 +74,14 @@ const auth = {
   },
 };
 
-// Initialize auth state on page load
+// Initialize auth state and mobile menu on page load
 document.addEventListener('DOMContentLoaded', () => {
   auth.updateNavigation();
   auth.initMobileMenu();
 });
+
+// Note: Mobile menu toggle is initialized in auth.js (initMobileMenu function)
+// to avoid code duplication across HTML files
 
 // Export for use in other scripts
 if (typeof window !== 'undefined') {

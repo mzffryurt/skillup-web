@@ -72,6 +72,15 @@ skillup-web/
    npm install
    ```
 
+3. **Configure environment variables (optional for development)**
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+   
+   # Edit .env and set your own JWT_SECRET for production
+   # For development, the default will work but is NOT secure
+   ```
+
 3. **Start the server**
    ```bash
    npm start
@@ -197,8 +206,9 @@ The JavaScript code is structured with React migration in mind:
 ### Security Considerations
 - Passwords are hashed using bcrypt before storage
 - JWT tokens for secure authentication
+- **IMPORTANT**: Change the JWT_SECRET environment variable in production
 - CORS enabled for API access
-- Environment variables should be used for production secrets
+- Input validation on all endpoints
 
 ### Future Enhancements
 - Database integration (MongoDB/PostgreSQL)
