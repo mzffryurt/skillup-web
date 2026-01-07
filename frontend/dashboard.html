@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard - SkillUp</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        📚 SkillUp
+      </a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="#" id="navLogout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Dashboard Header -->
+  <div class="dashboard-header">
+    <div class="container">
+      <h1>Welcome, <span id="userName">Student</span>!</h1>
+      <p>Continue your learning journey</p>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div id="loadingState" class="section">
+    <div class="container text-center">
+      <div class="spinner"></div>
+      <p>Loading your dashboard...</p>
+    </div>
+  </div>
+
+  <!-- Dashboard Content -->
+  <div id="dashboardContent" class="hidden">
+    <!-- Stats -->
+    <section class="section" style="padding-top: 2rem;">
+      <div class="container">
+        <div class="dashboard-stats">
+          <div class="stat-card">
+            <div class="stat-number" id="enrolledCount">0</div>
+            <div class="stat-label">Enrolled Courses</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="completedCount">0</div>
+            <div class="stat-label">Completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="inProgressCount">0</div>
+            <div class="stat-label">In Progress</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="hoursLearned">0</div>
+            <div class="stat-label">Hours Learned</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Courses -->
+    <section class="section section-light">
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+          <h2>My Courses</h2>
+          <a href="courses.html" class="btn btn-primary">Browse More Courses</a>
+        </div>
+
+        <div id="enrolledCoursesGrid" class="grid grid-cols-3">
+          <!-- Enrolled courses will be loaded here -->
+        </div>
+
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-state-icon">📚</div>
+          <h3 class="empty-state-title">No Courses Yet</h3>
+          <p class="empty-state-text">Start your learning journey by enrolling in a course</p>
+          <a href="courses.html" class="btn btn-primary">Explore Courses</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About SkillUp</h4>
+          <p>A next-generation learning platform designed to help you acquire new skills and advance your career.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="courses.html">Browse Courses</a>
+          <a href="register.html">Sign Up</a>
+          <a href="login.html">Login</a>
+        </div>
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <a href="courses.html?category=Web+Development">Web Development</a>
+          <a href="courses.html?category=Data+Science">Data Science</a>
+          <a href="courses.html?category=Design">Design</a>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: info@skillup.com</p>
+          <p>Support: support@skillup.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SkillUp. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

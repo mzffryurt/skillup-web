@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Details - SkillUp</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        📚 SkillUp
+      </a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+      <ul class="navbar-menu" id="navbarMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="#" id="navDashboard" class="hidden">Dashboard</a></li>
+        <li><a href="#" id="navLogin">Login</a></li>
+        <li><a href="#" id="navLogout" class="hidden">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Loading State -->
+  <div id="loadingState" class="section">
+    <div class="container text-center">
+      <div class="spinner"></div>
+      <p>Loading course details...</p>
+    </div>
+  </div>
+
+  <!-- Course Content -->
+  <div id="courseContent" class="hidden">
+    <!-- Course Header -->
+    <section class="hero" style="padding: 3rem 0;">
+      <div class="container">
+        <div style="max-width: 900px;">
+          <h1 id="courseTitle"></h1>
+          <p id="courseDescription" style="font-size: 1.125rem;"></p>
+          <div class="course-meta" style="color: white; opacity: 0.9;">
+            <div class="course-meta-item">
+              <span>👨‍🏫</span>
+              <span id="courseInstructor"></span>
+            </div>
+            <div class="course-meta-item">
+              <span>⏱️</span>
+              <span id="courseDuration"></span>
+            </div>
+            <div class="course-meta-item">
+              <span>📊</span>
+              <span id="courseLevel"></span>
+            </div>
+            <div class="course-meta-item">
+              <div class="rating">
+                <span>⭐</span>
+                <span id="courseRating"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Course Details -->
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-cols-3">
+          <!-- Main Content -->
+          <div style="grid-column: span 2;">
+            <div class="card">
+              <img id="courseThumbnail" src="" alt="Course" class="card-img" style="height: 400px;">
+              <div class="card-body">
+                <h2>About This Course</h2>
+                <p id="courseLongDescription"></p>
+                
+                <h3 class="mt-4">What You'll Learn</h3>
+                <div id="courseLessons"></div>
+
+                <h3 class="mt-4">Course Tags</h3>
+                <div id="courseTags" class="tags"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div>
+            <div class="card" style="position: sticky; top: 100px;">
+              <div class="card-body">
+                <div style="font-size: 2rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem;">
+                  $<span id="coursePrice"></span>
+                </div>
+                <div style="margin-bottom: 1rem; color: var(--text-secondary);">
+                  <span id="courseStudents"></span> students enrolled
+                </div>
+                <div id="enrollmentSection">
+                  <button id="enrollBtn" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Enroll Now
+                  </button>
+                  <p style="font-size: 0.875rem; color: var(--text-secondary); text-align: center;">
+                    30-day money-back guarantee
+                  </p>
+                </div>
+                <div id="enrolledSection" class="hidden">
+                  <div class="alert alert-success">
+                    ✓ You are enrolled in this course
+                  </div>
+                  <button id="goToDashboardBtn" class="btn btn-primary" style="width: 100%;">
+                    Go to Dashboard
+                  </button>
+                </div>
+                
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+                  <h4>This course includes:</h4>
+                  <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                    <li style="margin-bottom: 0.5rem;">✓ Lifetime access</li>
+                    <li style="margin-bottom: 0.5rem;">✓ Certificate of completion</li>
+                    <li style="margin-bottom: 0.5rem;">✓ Access on mobile and desktop</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>About SkillUp</h4>
+          <p>A next-generation learning platform designed to help you acquire new skills and advance your career.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="courses.html">Browse Courses</a>
+          <a href="register.html">Sign Up</a>
+          <a href="login.html">Login</a>
+        </div>
+        <div class="footer-section">
+          <h4>Categories</h4>
+          <a href="courses.html?category=Web+Development">Web Development</a>
+          <a href="courses.html?category=Data+Science">Data Science</a>
+          <a href="courses.html?category=Design">Design</a>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Email: info@skillup.com</p>
+          <p>Support: support@skillup.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SkillUp. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/course-detail.js"></script>
+</body>
+</html>
